@@ -12,6 +12,8 @@
 
 $roundsTotal = 0;
 
+// Function runs app until jackpot is won
+
  function jackpot() {
   $rounds = 0;
 
@@ -38,6 +40,8 @@ $roundsTotal = 0;
     $GLOBALS['roundsTotal'] += 1;
     echo "<br>";
 
+    // Show congrat messages
+
     if ($counter0 == 5) {
       echo "Congratulations! You got all five 0s.";
       echo "<br>";
@@ -52,11 +56,15 @@ $roundsTotal = 0;
   }
 }
 
+// Run app until jackpot is won 5 times
+
 jackpot();
 jackpot();
 jackpot();
 jackpot();
 jackpot();
+
+// Count how many rounds it takes on average to win the jackpot and how much it costs
   
 $average = round($roundsTotal / 5);
 $money = $average * 0.5;
@@ -66,10 +74,12 @@ echo "<br>";
 echo "It takes {$average} rounds on average to win the jackpot. {$average} rounds cost {$money} €." ;
 echo "<br>";
 
+// Count the average loss or profit
+
   if ($money > 30000) {
-      echo "You make {$profit} € loss.";
+      echo "You would make {$profit} € loss.";
   } else {
-      echo "You make {$profit} € profit.";
+      echo "You would make {$profit} € profit.";
   }
 
   ?>

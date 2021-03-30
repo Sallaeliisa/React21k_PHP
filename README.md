@@ -1,0 +1,1 @@
+This is a readme for PHP-exercises in BC

@@ -57,10 +57,16 @@
     echo '<br>';
     echo '<br>';
 
-    function validate_widthdraw_amount($amount, $balance) {
-        // TODO: Add solution code here
-    }
+// 3. Validate widthdraw
 
+    function validate_widthdraw_amount($amount, $balance) {
+        if (is_int($amount) && is_int($balance) && $amount >= 0 && $balance >= 0 && $amount <= $balance) {
+            return 'true';
+        } else {
+            return 'false';
+        }
+    }
+    
     echo 'Able to withdraw 100 from an account of 1000 balance: ' . validate_widthdraw_amount(100, 1000); // true
     echo '<br>';
     echo 'Able to withdraw 1000 from an account of 1000 balance: ' . validate_widthdraw_amount(1000, 1000); // true

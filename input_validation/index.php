@@ -27,12 +27,17 @@
     echo '<br>';
     echo '52 is a valid username: ' . validate_username(52);
     echo '<br>';
+    echo '<br>';
 
 // 2. Validate weekday
 
     function validate_weekday($day) {
-        // TODO: Add solution code here
+        if (is_int($day) && $day >= 0 && $day <= 6) {
+        return 'true';
+    } else {
+        return 'false';
     }
+}
 
     echo '0 is a valid weekday: ' . validate_weekday(0); // true
     echo '<br>';
@@ -49,6 +54,7 @@
     echo 'An empty string is a valid weekday: ' . validate_weekday(''); // false
     echo '<br>';
     echo 'An string is a valid weekday: ' . validate_weekday('5'); // false
+    echo '<br>';
     echo '<br>';
 
     function validate_widthdraw_amount($amount, $balance) {
@@ -68,6 +74,7 @@
     echo 'Able to withdraw 0 from an account of negative 100 balance: ' . validate_widthdraw_amount(0, -100); // false
     echo '<br>';
     echo 'Able to withdraw null from an account of 0 balance: ' . validate_widthdraw_amount(null, 0); // false
+    echo '<br>';
     echo '<br>';
 
     function validate_school_email($email_addr) {

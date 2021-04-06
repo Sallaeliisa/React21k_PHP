@@ -14,10 +14,10 @@
 
 
     function validate_username($username) {
-        if (!is_string($username ) || strlen($username) > 25 || empty($username)) {
-            return 'false';
-        } else {
+        if (is_string($username ) && strlen($username) <= 25 && !empty($username)) {
             return 'true';
+        } else {
+            return 'false';
         }
     }
 
@@ -26,6 +26,8 @@
     echo 'user is a valid username: ' . validate_username('user');
     echo '<br>';
     echo '52 is a valid username: ' . validate_username(52);
+    echo '<br>';
+    echo 'really_really_long_username is a valid username: ' . validate_username('really_really_long_username');
     echo '<br>';
     echo '<br>';
 
@@ -57,7 +59,7 @@
     echo '<br>';
     echo '<br>';
 
-// 3. Validate widthdraw
+// 3. Validate withdraw
 
     function validate_widthdraw_amount($amount, $balance) {
         if (is_int($amount) && is_int($balance) && $amount >= 0 && $balance >= 0 && $amount <= $balance) {
@@ -83,8 +85,14 @@
     echo '<br>';
     echo '<br>';
 
+// 4. Validate school email 
+
     function validate_school_email($email_addr) {
-        // TODO: Add solution code here
+        if(str_ends_with($email_addr, '@bc.fi') && !str_ends_with($email_addr, '@bc.fi@bc.fi')) {
+            return 'true';
+        } else {
+            return 'false';
+        }
     }
 
     echo 'test_student@bc.fi is a valid school email: ' . validate_school_email('test_student@bc.fi'); // true

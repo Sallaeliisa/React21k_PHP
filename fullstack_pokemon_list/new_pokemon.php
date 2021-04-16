@@ -13,16 +13,17 @@
 
 <body>
     <div class="buttons">
-    <button><a href="index.php">Go back to Pokemon list</a></button>
-</div>
+        <button><a href="index.php">Go back to Pokemon list</a></button>
+    </div>
     <h1>Create your own Pokemon</h1>
     <form method="POST" id="submission-form" action="formatted_pokemon.php">
         <label for="id">ID</label>
-        <input type="text" id="id">
+        <input type="text" id="id" name="id">
         <label for="name">Name</label>
-        <input type="text" id="name">
+        <input type="text" id="name" name="name">
         <label for="type">Type</label>
-        <select id="type">
+        <select id="type" name="type">
+            <option value="select">select</option>
             <option value="normal">normal</option>
             <option value="fight">fight</option>
             <option value="flying">flying</option>
@@ -30,32 +31,30 @@
             <option value="ground">ground</option>
         </select>
         <button type="submit" id="submit">Submit</button>
-</form>
+    </form>
 
 
-<script>
+    <script>
+        // let form = document.getElementById("form");
 
-    // let form = document.getElementById("form");
-    
-    // function Pokemon(id, name, type) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.type = type;
-    // }
+        // function Pokemon(id, name, type) {
+        //     this.id = id;
+        //     this.name = name;
+        //     this.type = type;
+        // }
 
-    // function newPokemon() {
-    //     event.preventDefault();
-    //     let id = document.getElementById("id").value;
-    //     let name = document.getElementById("name").value;
-    //     let type = document.getElementById("type").value;
+        // function newPokemon() {
+        //     event.preventDefault();
+        //     let id = document.getElementById("id").value;
+        //     let name = document.getElementById("name").value;
+        //     let type = document.getElementById("type").value;
 
-    //     let addPokemon = new Pokemon(id, name, type);
-    //     console.log(addPokemon);
-    // }
+        //     let addPokemon = new Pokemon(id, name, type);
+        //     console.log(addPokemon);
+        // }
 
-    // form.addEventListener("submit", newPokemon);
-
-</script>
+        // form.addEventListener("submit", newPokemon);
+    </script>
 
 </body>
 

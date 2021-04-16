@@ -29,7 +29,6 @@
 
         document.querySelectorAll('.navigate').forEach(button => {
             button.addEventListener('click', (e) => {
-                console.log(e.target.id);
                 getPokemon(e.target.id);
             })
         })

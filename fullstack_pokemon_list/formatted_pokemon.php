@@ -1,9 +1,11 @@
 <?php
+
     $page_number = $_GET['page'];
 
     $data = file_get_contents('data.json');
 
     $formatted_data = json_decode($data, true);
+
     $results = $formatted_data['results'];
 
     if ($page_number >= 0 && $page_number < (ceil(count($results)/50))) {
@@ -29,4 +31,7 @@
     echo $json_error_response;
 }
 
+
 ?>
+
+    

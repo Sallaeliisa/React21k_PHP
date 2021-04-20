@@ -1,0 +1,8 @@
+
+GET http://localhost/React21k_PHP/rest_api_recipes/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wednesday"
+}

@@ -1,0 +1,16 @@
+{
+    "recipes": [
+        {
+            "id": "1",
+            "name": "omelette",
+            "ingredients": "egg, cooking oil",
+            "difficulty": "easy"
+        },
+        {
+            "id": "2",
+            "name": "mashed potatos",
+            "ingredients": "potatoes, butter, milk, water",
+            "difficulty": "medium"
+        }
+    ]
+}

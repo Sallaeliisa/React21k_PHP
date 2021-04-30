@@ -7,13 +7,15 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^1.12",
+        "sensio/framework-extra-bundle": "^6.1",
+        "symfony/apache-pack": "^1.0",
         "symfony/console": "5.2.*",
         "symfony/dotenv": "5.2.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.2.*",
+        "symfony/maker-bundle": "^1.30",
         "symfony/yaml": "5.2.*"
-    },
-    "require-dev": {
     },
     "config": {
         "optimize-autoloader": true,

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Recipe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,35 +10,48 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeScreenController extends AbstractController
 {
+
+
     /**
-     * @Route("/home", name="home_screen", methods={"GET"})
+     * @Route("/recipes/add", name="add_new_recipe")
+     * @param Request $request
+     * @return Response
      */
-    public function index(Request $request): Response
+    public function addRecipe(Request $request): Response
     {
-        return $this->json([
-            'message' => $request->query->get('page')
-        ]);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $newRecipe = new Recipe();
+        $newRecipe->setName($request->query->get('name'));
+        $newRecipe->setIngredients($request->query->get('ingredients'));
+        $newRecipe->setDifficulty($request->query->get('difficulty'));
+
+        $entityManager->persist($newRecipe);
+
+        $entityManager->flush();
+
+        return new Response('trying to add new recipe...' . $newRecipe->getId());
     }
 
     /**
-     * @Route("/recipe/{id}", name="get_a_recipe", methods={"GET"})
+     * @Route("/recipes/all", name="get_all_recipes")
      */
-    public function recipe($id, Request $request)
-    {
-        return $this->json([
-            'message' => 'Requesting recipe with id' . $id,
-            'page' => $request->query->get('page')
-        ]);
-    }
 
-    /**
-     * @Route("/recipes/all", name="get_a_recipes", methods={"GET"})
-     */
     public function getAllRecipes(){
-        $rootPath = $this->getParameter('kernel.project_dir');
-        $recipes = file_get_contents($rootPath.'/resources/recipes.json');
-        $decodedRecipes = json_decode($recipes, true);
-        return $this->json($decodedRecipes);
+        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
+
+        $response = [];
+
+        foreach($recipes as $recipes) {
+            $response[] = array(
+                'name' => $recipes->getName(),
+                'ingredients' => $recipes->getIngredients(),
+                'difficulty' => $recipes->getDifficulty()
+            );
+        }
+
+        return $this->json($response);
     }
 }
 

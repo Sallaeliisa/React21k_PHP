@@ -77,7 +77,7 @@ class HomeScreenController extends AbstractController
     }
 
     /**
-     * @Route("/recipes/edit/{id}{name}", name="edit_a_recipe")
+     * @Route("/recipes/edit/{id}/{name}", name="edit_a_recipe")
      */
 
     public function editRecipes($id, $name) {
@@ -94,6 +94,28 @@ class HomeScreenController extends AbstractController
 
             return $this->json([
                 'message' => 'Edited a recipe with id . $id'
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/recipes/remove/{id}", name="remove_a_recipe")
+     */
+
+    public function removeRecipes($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
+
+        if (!$recipes) {
+            throw $this->createNotFoundException(
+                'No recipe was found with the id: ' . $id
+            );
+        } else {
+            $entityManager->remove($recipes);
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Removed the recipe with id . $id'
             ]);
         }
     }

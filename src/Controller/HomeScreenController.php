@@ -45,6 +45,7 @@ class HomeScreenController extends AbstractController
 
         foreach($recipes as $recipes) {
             $response[] = array(
+                'id' => $recipes->getId(),
                 'name' => $recipes->getName(),
                 'ingredients' => $recipes->getIngredients(),
                 'difficulty' => $recipes->getDifficulty()

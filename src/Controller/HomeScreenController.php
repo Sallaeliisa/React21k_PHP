@@ -54,5 +54,48 @@ class HomeScreenController extends AbstractController
 
         return $this->json($response);
     }
+
+    /**
+     * @Route("/recipes/find/{id}", name="find_a_recipe")
+     */
+
+    public function findRecipes($id) {
+        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
+
+        if (!$recipes) {
+        throw $this->createNotFoundException(
+            'No recipe was found with the id: ' . $id
+        );
+        } else {
+            return $this->json([
+                'id' => $recipes->getId(),
+                'name' => $recipes->getName(),
+                'ingredients' => $recipes->getIngredients(),
+                'difficulty' => $recipes->getDifficulty(),
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/recipes/edit/{id}{name}", name="edit_a_recipe")
+     */
+
+    public function editRecipes($id, $name) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
+
+        if (!$recipes) {
+            throw $this->createNotFoundException(
+                'No recipe was found with the id: ' . $id
+            );
+        } else {
+            $recipes->setName($name);
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id . $id'
+            ]);
+        }
+    }
 }
 

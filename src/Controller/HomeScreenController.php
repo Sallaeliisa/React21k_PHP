@@ -93,7 +93,7 @@ class HomeScreenController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Edited a recipe with id . $id'
+                'message' => 'Edited a recipe with id ' . $id
             ]);
         }
     }
@@ -115,7 +115,7 @@ class HomeScreenController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Removed the recipe with id . $id'
+                'message' => 'Removed the recipe with id: '. $id
             ]);
         }
     }
